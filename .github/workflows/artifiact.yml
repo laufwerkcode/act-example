@@ -1,0 +1,24 @@
+---
+name: Save DateTime
+
+on:
+
+jobs:
+  save-datetime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (required for act's artifact support)
+        uses: actions/checkout@v4
+
+      - name: Get current datetime and save to file
+        run: |
+          ISO_TIME=$(date -Iseconds)
+          echo $ISO_TIME > datetime.txt
+          cat datetime.txt
+
+      - name: Upload datetime.txt as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: datetime-artifact
+          path: datetime.txt
+

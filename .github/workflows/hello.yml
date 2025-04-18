@@ -1,0 +1,17 @@
+---
+name: hello
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
+
+jobs:
+  show-hello:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Just say hallo!
+      run: |
+        echo "Hello"

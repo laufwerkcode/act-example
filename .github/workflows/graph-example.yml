@@ -1,0 +1,33 @@
+---
+name: Dependency Example
+
+on:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo build
+        run: echo "Building..."
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo test
+        run: echo "Testing..."
+
+  lint:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo lint
+        run: echo "Linting..."
+
+  deploy:
+    needs: [test, lint]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo deploy
+        run: echo "Deploying..."
+
